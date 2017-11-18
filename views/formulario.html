@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="../public/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="../public/css/main.css" >
+	</head>
+	<body>
+
+		<nav class="navbar navbar-toggleable-md  navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="#">HackSpace</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item ">
+						<a class="nav-link" href="./especialidades.html">Especialidades</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="./formulario.html">Formulario</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container pt-5">
+			<form method="post">
+		  		<div class="form-group row">
+		  			<label for="example-text-input" class="col-2 col-form-label">Nombre:</label>
+			  		<div class="col-9">
+			    		<input class="form-control" id="nombres" name ="nombres" type="text" placeholder="Tu nombre y apellidos" id="example-text-input">
+			  		</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-email-input" class="col-2 col-form-label">Email:</label>
+					<div class="col-9">
+						<input class="form-control" id="email" name ="email" type="email" placeholder="email@dominio.com" id="example-email-input">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-select-input" class="col-2 col-form-label">Especialidad:</label>
+					<div class="col-9">
+						<select id="especialidad" name ="especialidad" class="form-control" id="example-select-input">
+					    	<option>Especialidad</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-select-input" class="col-2 col-form-label">Username:</label>
+					<div class="col-9">
+						<input class="form-control" id="username" name ="username" type="text" placeholder="Username" id="example-text-input">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-select-input" class="col-2 col-form-label">Contraseña:</label>
+					<div class="col-9">
+						<input class="form-control" id="password" name ="password" type="password" placeholder="" id="example-text-input">
+					</div>
+				</div>
+		 		<button type="submit" class="btn btn-primary">Enviar</button>
+			</form>
+		</div>
+
+		<!-- jQuery first, then Tether, then Bootstrap JS. -->
+		<script src="../public/js/jquery-3.1.1.slim.min.js" ></script>
+		<script src="../public/js/tether.min.js" ></script>
+		<script src="../public/js/bootstrap.min.js"></script>
+	</body>
+</html>
