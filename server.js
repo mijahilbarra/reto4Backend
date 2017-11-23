@@ -1,95 +1,43 @@
 'use strict'
 
-// VARIABLES 
-
-var especialidades = [	
-	{
-		nombre: 'FRONTEND',
-		imagen: 'frontend.png'
-	},
-	{
-		nombre: 'BACKEND',
-		imagen: 'backend.png'
-	},
-	{
-		nombre: 'ELECTRONICA',
-		imagen: 'electronica.png'
-	},
-	{
-		nombre: 'ANDROID',
-		imagen: 'android.png'
-	},
-	{
-		nombre: 'ALGORITMOS',
-		imagen: 'algoritmos.png'
-	},
-];
-
-var titulo = "The Simpson";
-
-var persona = {
-	nombres: "Bartolomeo H.",
-	apellidos: "Simpson",
-	edad: "10",
-	img: "bart.jpg",
-};
-
-var amigos = [
-	{
-		nombres: "Homer J",
-		apellidos: "Simpson",
-		edad: "34",
-		img: "homer.jpg",
-	},
-	{
-		nombres: "Marjorie H.",
-		apellidos: "Bouvier",
-		edad: "34",
-		img: "marge.jpg",
-	},
-	{
-		nombres: "Lisa",
-		apellidos: "Simpson",
-		edad: "8",
-		img: "lisa.jpg",
-	},
-	{
-		nombres: "Margaret",
-		apellidos: "Simpson",
-		edad: "2",
-		img: "maggie.jpg",
-	},
-];
-
 // REQUERIMIENTO DE MODULOS
 
-var express =  require('express');
-var swig = require('swig');
+	var express =  require('express');
+	var swig = require('swig');
+	var mongoose = require('mongoose');
+	var bodyParser = require('body-parser');
 
 //CONFIGURACIONES
 
-// Creación del servidor web con express
-var server = express();
+	// Creación del servidor web con express
+	var server = express();
 
-// Integracion del motor de templates swig
-server.engine('html',swig.renderFile);
-server.set('view engine', 'html');
-server.set('views', __dirname + '/views');
-swig.setDefaults({cache: false});
+	// Integracion del motor de templates swig
+	server.engine('html',swig.renderFile);
+	server.set('view engine', 'html');
+	server.set('views', __dirname + '/views');
+	swig.setDefaults({cache: false});
 
-// Seteo de dirección de carpeta de archivos estaticos
-server.use(express.static(__dirname + '/public'));
+	// Seteo de dirección de carpeta de archivos estaticos
+	server.use(express.static(__dirname + '/public'));
 
-// PETICIONES
+	// Integración de body parser
+	server.use(bodyParser.urlencoded({ extended: false }));
+	server.use(bodyParser.json());
 
-// Cuando exista una petición en el servidor  
-server.get('/',function(req,res){
-	res.render('especialidades.html', { categorias:especialidades, titulo:titulo, persona:persona, amigos:amigos });
-});
+	// Importacion de rutas
+	require('./routers')(server);
 
+
+// CONFIGURACIONES DB
+
+	// Integración de mongoose
+	mongoose.connect('mongodb://mococho:123456@ds119306.mlab.com:19306/hackspace', { useMongoClient: true });
+	mongoose.Promise = global.Promise;
+	
 // INICIAR SERVIDOR
 
-// Se corre el servidor en el puerto 8000
-server.listen(8000, function() {
-	console.log('El servidor esta escuchando en el puerto '+ 8000)
-});
+	// Se corre el servidor en el puerto 5000
+	server.listen(process.env.PORT || 5000, function() {
+		console.log('El servidor esta escuchando en el puerto '+ 5000)
+	});

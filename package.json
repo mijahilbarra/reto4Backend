@@ -2,14 +2,21 @@
   "name": "hackspace",
   "version": "1.0.0",
   "description": "Primer poryecto de Node",
+  "engines": {
+    "node": "9.2.0"
+  },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Mijahil Barra",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "mongoose": "^4.13.4",
     "swig": "^1.4.2"
   }
 }
