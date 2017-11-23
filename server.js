@@ -6,6 +6,7 @@
 	var swig = require('swig');
 	var mongoose = require('mongoose');
 	var bodyParser = require('body-parser');
+	var cors = require('cors');
 
 //CONFIGURACIONES
 
@@ -28,13 +29,16 @@
 	// Importacion de rutas
 	require('./routers')(server);
 
+	//Configuración de cors
+	server.use(cors());
+
 
 // CONFIGURACIONES DB
 
 	// Integración de mongoose
 	mongoose.connect('mongodb://mococho:123456@ds119306.mlab.com:19306/hackspace', { useMongoClient: true });
 	mongoose.Promise = global.Promise;
-	
+
 // INICIAR SERVIDOR
 
 	// Se corre el servidor en el puerto 5000
