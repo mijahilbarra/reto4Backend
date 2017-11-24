@@ -45,6 +45,7 @@ var app_usuario = new Vue({
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': 'POST, GET, UPDATE, DELETE, OPTIONS'
         }
       };
       axios.get(host+'/api/users',config)
