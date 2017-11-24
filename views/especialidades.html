@@ -27,7 +27,6 @@
 				font-size: 1.2rem;
 			}
 		</style>
-
 	</head>
 	<body>
 
@@ -40,140 +39,46 @@
 		    <div class="card m-2 ">
 		    <img class="card-img-top " v-bind:src="host +'/img/'+especialidad.imagen" alt="Card image cap">
 		    <div class="card-block">
-		       <h4 class="card-title">{{especialidad.nombre}}</h4>
+		       <h4 class="card-title">{{ especialidad.nombre }}</h4>
 		    </div>
 		    <ul class="list-group list-group-flush">
-		      <li class="list-group-item">Inscritos: {{especialidad.inscritos}}</li>
+		      <li class="list-group-item">Inscritos: {{ especialidad.inscritos }}</li>
 		        <template v-for="usuario in especialidad.users">
-		          <li class="list-group-item">{{usuario.nombres}}</li>
+		          <li class="list-group-item">{{ usuario.nombres }}</li>
 		        </template>   
 		    </ul>
-			</div>
 		  </template>
 		</div>  
 
-		<!-- Listado de Usuarios -->
-		<div id="app_usuario">
- 
-		</div> 
-		<div>
-			<div  class="container pt-2 d-flex justify-content-between">
-				<h4>USUARIOS</h4>
-				<button type="button" class="btn btn-primary">
-					<i class="fa fa-plus" aria-hidden="true"></i>
-					<span>&nbsp&nbsp Agregar</span>
-				</button>
-			</div>			
-			<div class="container pt-2">
-				<table class="table">
-			  		<thead class="thead-default">
-			    		<tr>
-			      			<th style="text-align:center;" >Nombres</th>
-						    <th style="text-align:center;" >Email</th>
-						    <th style="text-align:center;" >Especialidad</th>
-						    <th style="text-align:center;" >Username</th>
-						    <th style="text-align:center;" >Opciones</th>
-			    		</tr>
-			  		</thead>
-					<tbody>
-						    <tr>
-						    	<td>Primer Usuario</td>
-						    	<td>primerusuario@gmail.com</td>
-						    	<td>FRONTEND</td>
-						    	<td>PrimerUsuario</td>
-						    	<th class="d-flex justify-content-around px-4" >
-						    		<a>
-						    			<i class="fa fa-pencil fa-lg" style="color: #2980b9; cursor:pointer;" aria-hidden="true"></i>
-						    		</a>
-						    		<a>
-						    			<i class="fa fa-trash fa-lg"  style="color: #e74c3c; cursor:pointer;" aria-hidden="true"></i>
-						    		</a>
-						      	</th>
-						    </tr>
-					</tbody>
-				</table>
-			</div>
-		</div>	
+	<section class="container">
+			
+		
+			<h2 class="text-muted">BIBLIOGRAFÍA</h2>	
 
-		<!-- Formulario -->
-		<div> 
-			<div class="container pt-2">
-				<h4>Nuevo Usuario</h4>
-			</div>
-			<div class="container pt-2 pb-4 d-flex justify-content-around">
-				<form method="post" class="w-50">
-			  		<div class="form-group ">
-			  			<label for="example-text-input" class="col-2 col-form-label">Nombre:</label>
-				  		<input class="form-control" id="nombres" name ="nombres"  type="text" placeholder="Tu nombre y apellidos" id="example-text-input">
-				  	</div>
-					<div class="form-group ">
-						<label for="example-email-input" class="col-2 col-form-label">Email:</label>
-						<input class="form-control" id="email" name ="email" type="email" placeholder="email@dominio.com" id="example-email-input">						
+
+			<article class="row mt-5">	
+				{% for categoria in categorias %}
+					<div class="card m-2 "> 
+						<img class="card-img-top " src="/img/{{categoria.imagen}}" alt="Card image cap">
+						<div class="card-block">
+							<h4 class="card-title">{{ categoria.nombre }}</h4>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Inscritos: {{categoria.inscritos}}</li>
+							{% for user in categoria.users %}
+								<li class="list-group-item">{{user.nombres}}</li>
+							{% endfor %}
+						</ul>
 					</div>
-					<div class="form-group ">
-						<label for="example-select-input" class="col-2 col-form-label">Especialidad:</label>
-						<select id="especialidad" name ="especialidad" class="form-control" id="example-select-input" >	
-							   	<option>FRONTEND</option>
-						 </select>
-					</div>
-					<div class="form-group ">
-						<label for="example-select-input" class="col-2 col-form-label">Username:</label>
-						<input class="form-control" id="username" name ="username" type="text" placeholder="Username" id="example-text-input">
-					</div>
-					<div class="form-group ">
-						<label for="example-select-input" class="col-2 col-form-label">Contraseña:</label>
-						<input class="form-control" id="password" name ="password"  type="password" placeholder="" id="example-text-input">
-					</div>
-			 		<button class="btn btn-primary">AGREGAR</button>
-			 		<button class="btn btn-danger">CANCELAR</button>
-				</form>
-				<div class="card w-50 ml-4" style="height: 370px;"> 
-					<div class="d-flex justify-content-center">
-						<img class="card-img-top" src="https://trujillo-hackspace.herokuapp.com/img/frontend.png" alt="Card image cap">	
-					</div>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><b>Especialidad: </b>&nbsp&nbsp  FRONTEND </li>
-						<li class="list-group-item"><b>Nombres:      </b>&nbsp&nbsp  Primer Usuario</li>
-						<li class="list-group-item"><b>Email:        </b>&nbsp&nbsp  primerusuario@gmail.com</li>
-						<li class="list-group-item"><b>Useranme:     </b>&nbsp&nbsp  PrimerUsuario</li>
-					</ul>
-				</div>
-			</div>
-		</div>	
-				
+				{% endfor %}
+			</article>
+
+		</section>
 		<!-- jQuery first, then Tether, then Bootstrap JS. -->
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+		<!-- Aplicaciones en VueJS -->
 	</body>
-	<!-- Aplicaciones en VueJS -->
-	<script>
-		// Direccion de la aplicacion
-		var host = "https://trujillo-hackspace.herokuapp.com";
-		// Listado de especialidades
-		var app_especialidad = new Vue({
-		  el: '#app_especialidad',
-		  data: {
-		    host: host,
-		    especialidades: []
-		  },
-		  created: function(){
-		    this.cargar_especialidades();
-		  },
-		  methods: {
-		    cargar_especialidades: function(){
-		      var config = {
-		        headers: {
-		         'Access-Control-Allow-Origin': '*',
-		         'Content-Type': 'application/json',
-		        }
-		      };
-		      axios.get(host+'/api/specialities',config)
-		      .then(function(response){
-		        app_especialidad.especialidades = response.data;     
-		      })
-		    }  
-		  }  
-		})
-	</script>
 </html>
