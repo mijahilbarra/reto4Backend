@@ -1,32 +1,32 @@
 
-    // Direccion de la aplicacion
-    var host = "https://hackspacem.herokuapp.com";
-    // Listado de especialidades
-    var app_especialidad = new Vue({
-      el: '#app_especialidad',
-      data: {
-        host: host,
-        especialidades: []
-      },
-      created: function(){
-        this.cargar_especialidades();
-      },
-      methods: {
-        cargar_especialidades: function(){
-          var config = {
-            headers: {
-             'Access-Control-Allow-Origin': '*',
-             'Content-Type': 'application/json',
-            }
-          };
-          axios.get(host+'/api/specialities',config)
-          .then(function(response){
-            app_especialidad.especialidades = response.data;   
-            app_form.especialidades = response.data;  
-          })
-        }  
-      }  
-    })
+// Direccion de la aplicacion
+var host = "https://apphackaton.herokuapp.com";
+// Listado de especialidades
+var app_especialidad = new Vue({
+  el: '#app_especialidad',
+  data: {
+    host: host,
+    especialidades: []
+  },
+  created: function(){
+    this.cargar_especialidades();
+  },
+  methods: {
+    cargar_especialidades: function(){
+      var config = {
+        headers: {
+         'Access-Control-Allow-Origin': '*',
+         'Content-Type': 'application/json',
+        }
+      };
+      axios.get(host+'/api/specialities',config)
+      .then(function(response){
+        app_especialidad.especialidades = response.data;   
+        app_form.especialidades = response.data;  
+      })
+    }  
+  }  
+})
 
 // Listado de usuarios
 var app_usuario = new Vue({
@@ -45,7 +45,6 @@ var app_usuario = new Vue({
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Methods': 'POST, GET, UPDATE, DELETE, OPTIONS'
         }
       };
       axios.get(host+'/api/users',config)
@@ -120,15 +119,15 @@ var app_form = new Vue({
     },
     agregar: function(){
       this.mostrar = false;
-       axios.defaults.headers.common['Authorization'] = 'Basic TmVzdG9yUGxhc2VuY2lhOjEyMzQ1Ng';
-       var data =  {
+      axios.defaults.headers.common['Authorization'] = 'Basic TmVzdG9yUGxhc2VuY2lhOjEyMzQ1Ng';
+      var data =  {
         nombres: this.nombres,
         email: this.email,
         especialidad: this.especialidad,
         username: this.username,
         password: this.password,
       };
-            if(this.titulo_boton == "AGREGAR" ){
+      if(this.titulo_boton == "AGREGAR" ){
         axios.post( host +'/api/users',data)
         .then(function(response){
           app_usuario.cargar_usuarios();

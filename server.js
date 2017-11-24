@@ -19,8 +19,8 @@
 	server.set('views', __dirname + '/views');
 	swig.setDefaults({cache: false});
 
-	// Seteo de dirección de carpeta de archivos estaticos
-	server.use(express.static(__dirname + '/public'));
+/*	// Seteo de dirección de carpeta de archivos estaticos
+	server.use(express.static(__dirname + '/public'));*/
 
 	// Integración de body parser
 	server.use(bodyParser.urlencoded({ extended: false }));
