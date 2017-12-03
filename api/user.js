@@ -135,12 +135,13 @@
 				var new_especialidad = req.body.especialidad;
 				var new_username = req.body.username;
 				var new_password = req.body.password;
+				
 				// Busqueda del registro por su nombre unico
 				User.findOne({username:username})
 				.then( function(usuario) {
-
+					
 					// Almacenamos la especialidad anterior del usuario
-					var old_espepecialidad = usuario.especialidad;
+					var old_especialidad = usuario.especialidad;
 					// Almacenamos el username anterior
 					var old_username = usuario.username;
 					// Si hay actualizacion en el email
@@ -164,7 +165,8 @@
 							// Registro de nuevos nombres
 							usuario.nombres = new_nombres;
 							// Buscamos la especialidad
-							Speciality.findOne({nombre: old_espepecialidad })
+							
+							Speciality.findOne({nombre: old_especialidad })
 							.then( function(especialidad) {
 								// Buscamos al usuario
 								var user = especialidad.users.find(function(user) {
